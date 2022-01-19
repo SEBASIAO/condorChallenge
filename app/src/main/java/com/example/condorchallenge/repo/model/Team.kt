@@ -32,7 +32,7 @@ data class TeamResponse(
 
 data class TeamEventsResponse(
     @SerializedName("results")
-    val teams: List<TeamEvent>
+    val events: List<TeamEvent>
 )
 
 data class TeamEvent(

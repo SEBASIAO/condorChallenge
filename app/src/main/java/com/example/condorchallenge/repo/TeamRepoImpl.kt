@@ -20,7 +20,7 @@ class TeamRepoImpl @Inject constructor(
 
     override suspend fun getTeamEvents(id: String): List<TeamEvent> {
         return if(InternetCheck.isNetworkAvailable()){
-            apiClient.getTeamEvents(id).teams
+            apiClient.getTeamEvents(id).events
         }else{
             emptyList()
         }
