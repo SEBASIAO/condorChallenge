@@ -1,7 +1,10 @@
 package com.example.condorchallenge.repo.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Team(
     @SerializedName("idTeam")
     val id: String = "",
@@ -19,9 +22,22 @@ data class Team(
     var desc: String = "",
     @SerializedName("strWebsite")
     val web: String = "",
-)
+) : Parcelable
+
 
 data class TeamResponse(
     @SerializedName("teams")
     val teams: List<Team>
+)
+
+data class TeamEventsResponse(
+    @SerializedName("results")
+    val teams: List<TeamEvent>
+)
+
+data class TeamEvent(
+    @SerializedName("strEvent")
+    val event: String,
+    @SerializedName("dateEvent")
+    val date: String
 )

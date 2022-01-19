@@ -21,5 +21,8 @@
         android:name="com.example.condorchallenge.ui.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/detail_fragment" >
+        <argument
+            android:name="team"
+            app:argType="com.example.condorchallenge.repo.model.Team" />
     </fragment>
 </navigation>

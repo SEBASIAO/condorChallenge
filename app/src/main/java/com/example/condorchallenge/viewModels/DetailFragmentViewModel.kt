@@ -10,16 +10,16 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class HomeFragmentViewModel @Inject constructor(
+class DetailFragmentViewModel @Inject constructor(
     private val teamRepository: TeamRepository
 ) : ViewModel(){
 
-    fun getAllTeams(country : String) = liveData(Dispatchers.IO){
+    fun getTeamEvents( id : String) = liveData(Dispatchers.IO){
         emit(Resource.Loading())
         try {
             emit(
                 Resource.Success(
-                    teamRepository.getAllTeams(country)
+                    teamRepository.getTeamEvents(id)
                 )
             )
         } catch (e: Exception) {
