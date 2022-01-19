@@ -1,5 +1,9 @@
 package com.example.condorchallenge.di
 
+import com.example.condorchallenge.repo.ApiClient
+import com.example.condorchallenge.repo.TeamRepoImpl
+import com.example.condorchallenge.repo.TeamRepository
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,4 +24,19 @@ object NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
+    @Singleton
+    @Provides
+    fun provideApiClient(retrofit: Retrofit) : ApiClient {
+        return retrofit.create(ApiClient::class.java)
+    }
+
+
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+interface repositoryModule{
+    @Binds
+    fun provideRepositoryImpl(repositoryImpl: TeamRepoImpl) : TeamRepository
 }
