@@ -1,4 +1,4 @@
-package com.example.breakingbadchallenge.di
+package com.example.condorchallenge.di
 
 import dagger.Module
 import dagger.Provides
