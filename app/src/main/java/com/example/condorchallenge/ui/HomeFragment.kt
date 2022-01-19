@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.condorchallenge.MainActivity
 import com.example.condorchallenge.R
@@ -15,7 +16,7 @@ import com.example.condorchallenge.repo.model.Team
 import com.example.condorchallenge.viewModels.HomeFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-private const val COUNTRY_SPAIN = "Spain"
+const val COUNTRY_SPAIN = "Spain"
 private const val COUNTRY_GERMANY = "Germany"
 private const val COUNTRY_ENGLAND = "England"
 
@@ -28,6 +29,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), TeamsAdapter.OnTeamClickL
     private lateinit var mLayoutManager : LinearLayoutManager
 
     private val viewModel : HomeFragmentViewModel by viewModels()
+    private val args by navArgs<HomeFragmentArgs>()
 
     private var teamsList = mutableListOf<Team>()
     private var mActivity: MainActivity? = null
@@ -42,9 +44,9 @@ class HomeFragment : Fragment(R.layout.fragment_home), TeamsAdapter.OnTeamClickL
             layoutManager = mLayoutManager
             adapter = mAdapter
         }
+        mAdapter.setTeams(args.teamsList.teams.toMutableList())
 
         setupActionBar(getString(R.string.app_name))
-        getAllTeams(COUNTRY_SPAIN)
         selectFilter(binding.tvSpain)
         setUpFilters()
     }
@@ -73,16 +75,16 @@ class HomeFragment : Fragment(R.layout.fragment_home), TeamsAdapter.OnTeamClickL
     private fun unSelectFilters(){
         with(binding){
             mActivity?.let {
-                tvEngland.setTextColor(it.getColor(R.color.black))
-                tvSpain.setTextColor(it.getColor(R.color.black))
-                tvGermany.setTextColor(it.getColor(R.color.black))
+                tvEngland.setTextColor(it.getColor(R.color.white))
+                tvSpain.setTextColor(it.getColor(R.color.white))
+                tvGermany.setTextColor(it.getColor(R.color.white))
             }
         }
     }
 
     private fun selectFilter(textView: TextView){
         mActivity?.let {
-        textView.setTextColor(it.getColor(R.color.purple_500))
+        textView.setTextColor(it.getColor(R.color.yellowCondor))
         }
     }
 

@@ -24,11 +24,11 @@ data class Team(
     val web: String = "",
 ) : Parcelable
 
-
+@Parcelize
 data class TeamResponse(
     @SerializedName("teams")
     val teams: List<Team>
-)
+) : Parcelable
 
 data class TeamEventsResponse(
     @SerializedName("results")
